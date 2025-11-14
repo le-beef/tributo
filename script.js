@@ -105,10 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. ☁️ Lógica de Liberar - AGORA REMOVE DO FIREBASE
-    btnLiberar.addEventListener('click', () => {
-        if (mesaSelecionada) {
-            // REMOVE O DADO DO FIREBASE
+    // 5. ☁️ Lógica de Liberar - AGORA COM CONFIRMAÇÃO
+btnLiberar.addEventListener('click', () => {
+    if (mesaSelecionada) {
+        
+        // 💡 NOVA LINHA: Adiciona a confirmação
+        const confirmar = confirm(`Tem certeza que deseja LIBERAR a mesa ${mesaSelecionada.dataset.nome}?`);
+        
+        if (confirmar) {
+            // REMOVE O DADO DO FIREBASE SOMENTE SE O USUÁRIO CLICAR EM 'OK'
             refMesas.child(mesaSelecionada.id).remove()
                 .then(() => {
                     modalOverlay.style.display = 'none';
@@ -118,8 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert("Erro ao liberar no Firebase: " + error.message);
                 });
         }
-    });
-
+        // Se o usuário clicar em 'Cancelar', nada acontece, e o modal permanece aberto.
+    }
+});
     // 6. Fechar Modal (Inalterado)
     btnFechar.addEventListener('click', () => {
         modalOverlay.style.display = 'none';
@@ -177,4 +183,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicia o carregamento
     carregarStatusMesas();
+
 });
