@@ -9,6 +9,19 @@ body {
 h1 {
     margin-bottom: 10px;
 }
+h2 {
+    /* Define o fundo amarelo (#FFFF00) para realçar o texto */
+    background-color: #FFFF00; 
+    
+    /* Faz com que o elemento se ajuste apenas à largura do texto */
+    display: inline-block; 
+    
+    /* Adiciona um pequeno espaço interno (padding) ao redor do texto */
+    padding: 5px 10px; 
+    
+    /* Centraliza o bloco h2 na tela, caso o elemento pai esteja centralizado */
+    margin: 20px auto;
+}
 
 /* 🗺️ Estilos do Mapa */
 .mapa-container {
@@ -194,4 +207,5 @@ h1 {
 
 #btn-exportar:hover {
     background-color: #0056b3;
+
 }
